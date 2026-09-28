@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Repositórios e Ferramentas Úteis</title>
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --card-bg: #ffffff;
+      --card-hover-bg: #f8f9fa;
+      --card-border: #e2e8f0;
+      --card-border-hover: #cbd5e1;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --header-bg: #ffffff;
+      --header-border: #f1f5f9;
+      --badge-bg: #f1f5f9;
+      --badge-text: #475569;
+      --star-active: #eab308;
+      --star-inactive: #94a3b8;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --input-bg: #f8fafc;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -4px rgba(0,0,0,0.05);
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --card-hover-bg: #334155;
+      --card-border: #334155;
+      --card-border-hover: #475569;
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --text-light: #94a3b8;
+      --header-bg: #0f172a;
+      --header-border: #1e293b;
+      --badge-bg: #334155;
+      --badge-text: #e2e8f0;
+      --star-active: #facc15;
+      --star-inactive: #64748b;
+      --primary: #3b82f6;
+      --primary-hover: #60a5fa;
+      --input-bg: #1e293b;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.3);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.5;
+    }
+
+    header {
+      background-color: var(--header-bg);
+      border-bottom: 1px solid var(--header-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--primary);
+      color: #ffffff;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .brand-text h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-text p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .theme-toggle-btn {
+      background: var(--input-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 0.6rem 0.9rem;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .theme-toggle-btn:hover {
+      border-color: var(--card-border-hover);
+    }
+
+    main {
+      flex: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    .controls-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      min-width: 280px;
+      max-width: 450px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      background-color: var(--input-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-light);
+      pointer-events: none;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 0.5rem;
+      background: var(--input-bg);
+      padding: 0.25rem;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+    }
+
+    .filter-tab {
+      padding: 0.5rem 1rem;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .filter-tab.active {
+      background: var(--card-bg);
+      color: var(--text-main);
+      box-shadow: var(--shadow-sm);
+      font-weight: 600;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .tool-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--card-border-hover);
+    }
+
+    .tool-card.is-favorite {
+      border-color: rgba(234, 179, 8, 0.4);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+      gap: 0.75rem;
+    }
+
+    .card-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-main);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .card-title:hover {
+      color: var(--primary);
+    }
+
+    .fav-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.35rem;
+      border-radius: 8px;
+      color: var(--star-inactive);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fav-btn:hover {
+      background-color: var(--badge-bg);
+    }
+
+    .fav-btn.active {
+      color: var(--star-active);
+    }
+
+    .fav-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    .card-description {
+      color: var(--text-muted);
+      font-size: 0.925rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+      flex-grow: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid var(--header-border);
+    }
+
+    .category-badge {
+      background-color: var(--badge-bg);
+      color: var(--badge-text);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .open-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      padding: 0.35rem 0.6rem;
+      border-radius: 6px;
+    }
+
+    .open-btn:hover {
+      background-color: var(--badge-bg);
+      color: var(--primary-hover);
+    }
+
+    .fav-pin-badge {
+      position: absolute;
+      top: -10px;
+      right: 15px;
+      background: var(--star-active);
+      color: #0f172a;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--text-muted);
+    }
+
+    .empty-state h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      border-top: 1px solid var(--header-border);
+      background-color: var(--header-bg);
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .header-actions {
+        width: 100%;
+        justify-content: flex-end;
+      }
+
+      .controls-section {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .search-box {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon">U</div>
+        <div class="brand-text">
+          <h1>Repositórios Úteis</h1>
+          <p>Coleção de ferramentas e utilitários web</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Alternar tema">
+          <span id="themeIcon">🌙</span>
+          <span id="themeText">Modo Escuro</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="controls-section">
+      <div class="search-box">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="searchInput" class="search-input" placeholder="Buscar ferramenta..." aria-label="Buscar ferramenta" />
+      </div>
+
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">Todos</button>
+        <button class="filter-tab" data-filter="favorites">Favoritos ❤️</button>
+      </div>
+    </section>
+
+    <div id="toolsGrid" class="grid-container">
+      <!-- Cards rendered dynamically via JS -->
+    </div>
+  </main>
+
+  <footer>
+    <p>Criado para organizar e facilitar o acesso às melhores ferramentas no GitHub.</p>
+  </footer>
+
+  <script>
+    const toolsData = [
+      {
+        id: "text-tools",
+        title: "TextTools",
+        url: "https://anderitmo.github.io/TextTools/",
+        description: "Diversas ferramentas para manipulação de textos com recursos de Markdown.",
+        category: "Texto / Markdown"
+      },
+      {
+        id: "estatistica-pesquisadores",
+        title: "Estatística para Pesquisadores",
+        url: "https://anderitmo.github.io/estatistica-para-pesquisadores/",
+        description: "Calculadoras úteis para pesquisas quantitativas.",
+        category: "Estatística / Ciência"
+      },
+      {
+        id: "md-view",
+        title: "MDView",
+        url: "https://anderitmo.github.io/visualizador-md-com-post/",
+        description: "Visualizador de Markdown com suporte a artigos e postagens.",
+        category: "Markdown"
+      },
+      {
+        id: "freq-lab",
+        title: "FREQLAB",
+        url: "https://anderitmo.github.io/mp3-frequency-analyzer/",
+        description: "Analisador de espectro de áudio MP3 em tempo real.",
+        category: "Áudio / Frequência"
+      },
+      {
+        id: "aura-spectrum",
+        title: "AuraSpectrum",
+        url: "https://anderitmo.github.io/Mp3AnalisadorDeSpectro/",
+        description: "Analisador de espectro de áudio MP3 com detector de pitch.",
+        category: "Áudio / Pitch"
+      },
+      {
+        id: "polaroid-studio",
+        title: "Polaroid Studio",
+        url: "https://anderitmo.github.io/PhotoFramePolaroid/",
+        description: "Criador de quadros e fotos estilizadas no formato Polaroid.",
+        category: "Imagem / Design"
+      },
+      {
+        id: "lm-studio",
+        title: "LM Studio Interface",
+        url: "https://anderitmo.github.io/lm-studio-interface/",
+        description: "Interface web para conectar a modelos de IA locais executados no LM Studio.",
+        category: "IA / Chat"
+      },
+      {
+        id: "keycraft",
+        title: "KeyCraft",
+        url: "https://anderitmo.github.io/gerador-de-senhas/",
+        description: "Gerador seguro de senhas fortes, PINs e chaves aleatórias.",
+        category: "Segurança / Utilitários"
+      }
+    ];
+
+    // Local Storage state management
+    const FAVORITES_KEY = "uteis_favorites_v1";
+    const THEME_KEY = "uteis_theme_v1";
+
+    let favorites = JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]");
+    let currentFilter = "all";
+    let searchQuery = "";
+
+    // DOM Elements
+    const toolsGrid = document.getElementById("toolsGrid");
+    const searchInput = document.getElementById("searchInput");
+    const filterTabs = document.querySelectorAll(".filter-tab");
+    const themeToggle = document.getElementById("themeToggle");
+    const themeIcon = document.getElementById("themeIcon");
+    const themeText = document.getElementById("themeText");
+
+    // Initialize Theme
+    function initTheme() {
+      const savedTheme = localStorage.getItem(THEME_KEY);
+      if (savedTheme) {
+        document.documentElement.setAttribute("data-theme", savedTheme);
+        updateThemeUI(savedTheme);
+      } else {
+        // Default light theme as requested, or check system preference if light is clean default
+        document.documentElement.setAttribute("data-theme", "light");
+        updateThemeUI("light");
+      }
+    }
+
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", newTheme);
+      localStorage.setItem(THEME_KEY, newTheme);
+      updateThemeUI(newTheme);
+    }
+
+    function updateThemeUI(theme) {
+      if (theme === "dark") {
+        themeIcon.textContent = "☀️";
+        themeText.textContent = "Modo Claro";
+      } else {
+        themeIcon.textContent = "🌙";
+        themeText.textContent = "Modo Escuro";
+      }
+    }
+
+    // Toggle Favorite
+    function toggleFavorite(id) {
+      if (favorites.includes(id)) {
+        favorites = favorites.filter(favId => favId !== id);
+      } else {
+        favorites.push(id);
+      }
+      localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+      renderTools();
+    }
+
+    // Filter and Sort Tools
+    function getProcessedTools() {
+      let filtered = toolsData.filter(tool => {
+        const matchesSearch = tool.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                              tool.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                              tool.category.toLowerCase().includes(searchQuery.toLowerCase());
+
+        const isFav = favorites.includes(tool.id);
+        const matchesFilter = currentFilter === "all" || (currentFilter === "favorites" && isFav);
+
+        return matchesSearch && matchesFilter;
+      });
+
+      // Reposition favorites first
+      filtered.sort((a, b) => {
+        const aFav = favorites.includes(a.id);
+        const bFav = favorites.includes(b.id);
+        if (aFav && !bFav) return -1;
+        if (!aFav && bFav) return 1;
+        return 0; // preserve original order otherwise
+      });
+
+      return filtered;
+    }
+
+    // Render Cards
+    function renderTools() {
+      const toolsToDisplay = getProcessedTools();
+
+      if (toolsToDisplay.length === 0) {
+        toolsGrid.innerHTML = `
+          <div class="empty-state">
+            <h3>Nenhuma ferramenta encontrada</h3>
+            <p>Tente ajustar o termo da pesquisa ou trocar o filtro ativo.</p>
+          </div>
+        `;
+        return;
+      }
+
+      toolsGrid.innerHTML = toolsToDisplay.map(tool => {
+        const isFav = favorites.includes(tool.id);
+        return `
+          <div class="tool-card ${isFav ? 'is-favorite' : ''}">
+            ${isFav ? `<div class="fav-pin-badge">★ Favorito</div>` : ''}
+            <div>
+              <div class="card-header">
+                <div class="card-title-group">
+                  <a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="card-title">
+                    ${tool.title}
+                  </a>
+                </div>
+                <button class="fav-btn ${isFav ? 'active' : ''}"
+                        onclick="toggleFavorite('${tool.id}')"
+                        aria-label="${isFav ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}"
+                        title="${isFav ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                  </svg>
+                </button>
+              </div>
+              <p class="card-description">${tool.description}</p>
+            </div>
+            <div class="card-footer">
+              <span class="category-badge">${tool.category}</span>
+              <a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="open-btn">
+                Abrir
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Event Listeners
+    searchInput.addEventListener("input", (e) => {
+      searchQuery = e.target.value.trim();
+      renderTools();
+    });
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        filterTabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        currentFilter = tab.dataset.filter;
+        renderTools();
+      });
+    });
+
+    themeToggle.addEventListener("click", toggleTheme);
+
+    // Initial load
+    initTheme();
+    renderTools();
+  </script>
+</body>
+</html>
