@@ -516,6 +516,20 @@
         url: "https://anderitmo.github.io/gerador-de-senhas/",
         description: "Gerador seguro de senhas fortes, PINs e chaves aleatórias.",
         category: "Segurança / Utilitários"
+      },
+      {
+        id: "image-tools",
+        title: "ImageTools",
+        url: "https://anderitmo.github.io/ImageTools/",
+        description: "Suíte para compressão, conversão de imagens e edição de metadados EXIF.",
+        category: "Imagem / Utilitários"
+      },
+      {
+        id: "merge-pdf",
+        title: "MergePDF",
+        url: "https://github.com/anderitmo/MergePDF",
+        description: "Ferramenta para juntar e combinar dois ou mais arquivos PDF.",
+        category: "Documentos / PDF"
       }
     ];
 
@@ -542,7 +556,6 @@
         document.documentElement.setAttribute("data-theme", savedTheme);
         updateThemeUI(savedTheme);
       } else {
-        // Default light theme as requested, or check system preference if light is clean default
         document.documentElement.setAttribute("data-theme", "light");
         updateThemeUI("light");
       }
@@ -583,7 +596,7 @@
         const matchesSearch = tool.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                               tool.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
                               tool.category.toLowerCase().includes(searchQuery.toLowerCase());
-
+        
         const isFav = favorites.includes(tool.id);
         const matchesFilter = currentFilter === "all" || (currentFilter === "favorites" && isFav);
 
@@ -596,7 +609,7 @@
         const bFav = favorites.includes(b.id);
         if (aFav && !bFav) return -1;
         if (!aFav && bFav) return 1;
-        return 0; // preserve original order otherwise
+        return 0;
       });
 
       return filtered;
@@ -628,8 +641,8 @@
                     ${tool.title}
                   </a>
                 </div>
-                <button class="fav-btn ${isFav ? 'active' : ''}"
-                        onclick="toggleFavorite('${tool.id}')"
+                <button class="fav-btn ${isFav ? 'active' : ''}" 
+                        onclick="toggleFavorite('${tool.id}')" 
                         aria-label="${isFav ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}"
                         title="${isFav ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}">
                   <svg viewBox="0 0 24 24">
