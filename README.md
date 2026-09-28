@@ -12,6 +12,8 @@ Interface moderna, rápida e responsiva para organizar e acessar as melhores fer
 - **Polaroid Studio**: Criador de quadros e fotos estilizadas no formato Polaroid.
 - **LM Studio Interface**: Interface web para conectar a modelos de IA locais executados no LM Studio.
 - **KeyCraft**: Gerador seguro de senhas fortes, PINs e chaves aleatórias.
+- **ImageTools**: Suíte para compressão, conversão de imagens e edição de metadados EXIF.
+- **MergePDF**: Ferramenta para juntar e combinar dois ou mais arquivos PDF.
 
 ## ✨ Funcionalidades
 
