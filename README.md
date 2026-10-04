@@ -14,6 +14,7 @@ Interface moderna, rápida e responsiva para organizar e acessar as melhores fer
 - **KeyCraft**: Gerador seguro de senhas fortes, PINs e chaves aleatórias.
 - **ImageTools**: Suíte para compressão, conversão de imagens e edição de metadados EXIF.
 - **MergePDF**: Ferramenta para juntar e combinar dois ou mais arquivos PDF.
+- **EquationEditor**: Editor de equações matemáticas baseada em LateX e Markdown.
 
 ## ✨ Funcionalidades
 
