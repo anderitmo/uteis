@@ -15,6 +15,7 @@ Interface moderna, rápida e responsiva para organizar e acessar as melhores fer
 - **ImageTools**: Suíte para compressão, conversão de imagens e edição de metadados EXIF.
 - **MergePDF**: Ferramenta para juntar e combinar dois ou mais arquivos PDF.
 - **EquationEditor**: Editor de equações matemáticas baseada em LateX e Markdown.
+- **QRCode e BarCode Utils**: Ferramenta para gerar e ler códigos da barras e QRCode.
 
 ## ✨ Funcionalidades
 
