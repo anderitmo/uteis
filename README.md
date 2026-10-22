@@ -16,6 +16,8 @@ Interface moderna, rápida e responsiva para organizar e acessar as melhores fer
 - **MergePDF**: Ferramenta para juntar e combinar dois ou mais arquivos PDF.
 - **EquationEditor**: Editor de equações matemáticas baseada em LateX e Markdown.
 - **QRCode e BarCode Utils**: Ferramenta para gerar e ler códigos da barras e QRCode.
+- **NetTools**: Conjunto de Ferramentas de testes para Serviços de Internet.
+- **Qual Meu IP**: Ferramenta para detectar IPv4 e IPv6.
 
 ## ✨ Funcionalidades
 
