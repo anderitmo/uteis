@@ -18,6 +18,7 @@ Interface moderna, rápida e responsiva para organizar e acessar as melhores fer
 - **QRCode e BarCode Utils**: Ferramenta para gerar e ler códigos da barras e QRCode.
 - **NetTools**: Conjunto de Ferramentas de testes para Serviços de Internet.
 - **Qual Meu IP**: Ferramenta para detectar IPv4 e IPv6.
+- **Manipulador de CSV**: Converte em tabela, exporta para json, xlsx e markdown.
 
 ## ✨ Funcionalidades
 
